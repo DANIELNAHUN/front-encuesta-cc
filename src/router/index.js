@@ -9,6 +9,11 @@ const routes = [
     name: 'home',
     component: () => import( '../views/EncuestaView.vue')
   },
+  {
+    path: '/config',
+    name: 'config',
+    component: () => import( '../views/ConfigView.vue')
+  }
 ]
 
 const router = new VueRouter({
