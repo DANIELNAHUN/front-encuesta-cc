@@ -1,5 +1,11 @@
 # front-encuesta-cc
 
+## Add Libraries
+```
+vue add vuetify
+npm install --save axios vue-axios
+```
+
 ## Project setup
 ```
 npm install
