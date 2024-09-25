@@ -39,6 +39,7 @@ export default {
     },
     setOficina(){
       localStorage.setItem("id_oficina", this.id_oficina_select)
+      this.$router.push({ path: "/" });
     }
   },
 };

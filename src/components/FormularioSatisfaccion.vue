@@ -28,19 +28,25 @@ export default {
   },
   methods: {
     registrarRespuesta(id_opcion_s) {
-      const fecha_end = new Date();
-      const param={
-        id_oficina: localStorage.getItem("id_oficina"),
-        id_opcion_cliente: this.cliente,
-        id_pregunta: 2,
-        id_opcion: id_opcion_s,
-        date_init: this.fecha_init.toISOString(),
-        date_end: fecha_end.toISOString(),
-        created_at: fecha_end.toISOString(),
+      const id_oficinaLS = localStorage.getItem("id_oficina")
+      if (id_oficinaLS){
+        const fecha_end = new Date();
+        const param={
+          id_oficina: id_oficinaLS,
+          id_opcion_cliente: this.cliente,
+          id_pregunta: 2,
+          id_opcion: id_opcion_s,
+          date_init: this.fecha_init.toISOString(),
+          date_end: fecha_end.toISOString(),
+          created_at: fecha_end.toISOString(),
+        }
+        console.log(param)
+        this.$store.dispatch("setRespuestas", param)
+        this.$emit("closeDialogEncuesta");
       }
-      console.log(param)
-      this.$store.dispatch("setRespuestas", param)
-      this.$emit("closeDialogEncuesta");
+      else{
+        this.$router.push({ path: "/config" });
+      }
     },
   },
   data() {
