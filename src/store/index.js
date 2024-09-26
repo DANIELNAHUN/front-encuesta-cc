@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import axios from 'axios'
 
 const BASE_URL = 'http://127.0.0.1:8000/api/encuesta/'
-// const BASE_URL = 'https://apicsattienda.cableclub.com.pe/api/encuesta/encuesta/'
+// const BASE_URL = 'https://apicsattienda.cableclub.com.pe/api/encuesta/'
 
 Vue.use(Vuex)
 
