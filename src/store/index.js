@@ -10,6 +10,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     oficinas:[],
+    cajeras:[],
     preguntas:[],
     opciones:[],
     respuestas:[]
@@ -20,6 +21,9 @@ export default new Vuex.Store({
     SET_OFICINAS(state, oficinas){
       state.oficinas = oficinas
     },
+    SET_CAJERAS(state, cajeras){
+      state.cajeras = cajeras
+    },    
     SET_PREGUNTAS(state, preguntas){
       state.preguntas = preguntas
     },
@@ -35,6 +39,10 @@ export default new Vuex.Store({
       const res = await axios.get(BASE_URL+'oficinas/')
       commit('SET_OFICINAS', res.data)
     },
+    async getCajeras({commit}, param={}){
+      const res = await axios.get(BASE_URL+'cajeras/?id_oficina='+param.id_oficina)
+      commit('SET_CAJERAS', res.data)
+    },    
     async getPreguntas({commit}){
       const res = await axios.get(BASE_URL+'preguntas/')
       commit('SET_PREGUNTAS', res.data)

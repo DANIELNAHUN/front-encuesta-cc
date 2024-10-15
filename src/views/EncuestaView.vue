@@ -17,19 +17,20 @@
           v-bind="attrs" v-on="on"
         ></v-img>
       </template>
-      <FormularioSatisfaccionVue :fecha_init="fecha_inicio" :cliente="cliente"  @closeDialogEncuesta="dialog_formulario = false"/>
+      <FormularioSatisfaccionVue :fecha_init="fecha_inicio" :cliente="cliente"  @closeDialogEncuesta="closeDialogEncuestaa"/>
     </v-dialog>
   </v-container>
 </template>
 
 <script>
 import FormularioSatisfaccionVue from "@/components/FormularioSatisfaccion.vue";
+import moment from 'moment-timezone'
 export default {
   components: { FormularioSatisfaccionVue },
   data() {
     return {
       dialog_formulario: false,
-      fecha_inicio: new Date(),
+      fecha_inicio: moment().tz('America/Lima').format('YYYY-MM-DDTHH:mm:ss.SSS[Z]'),
       cliente: 0
     };
   },
@@ -41,6 +42,10 @@ export default {
       this.$store.dispatch('getOpciones', param)
       this.cliente = cliente
     },
+    closeDialogEncuestaa(){
+      this.dialog_formulario=false
+      window.location.reload()
+    }
   },
 };
 </script>

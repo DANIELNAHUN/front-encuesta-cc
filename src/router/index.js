@@ -19,9 +19,10 @@ const routes = [
   }
 ]
 
-const isOficina = () =>{
+const idConfigurated = () =>{
   const oficina = localStorage.getItem('id_oficina')
-  if(oficina) return true
+  const cajera = localStorage.getItem('id_cajera')
+  if(oficina && cajera) return true
   return false
 }
 
@@ -33,7 +34,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if(to.matched.some(record => record.meta.needsOficina)){
-    if(isOficina()){
+    if(idConfigurated()){
       next()
     }else{
       next({name: 'config'})

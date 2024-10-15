@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import moment from 'moment-timezone'
 export default {
   props:{fecha_init:"", cliente:Number},
   computed: {
@@ -29,16 +30,18 @@ export default {
   methods: {
     registrarRespuesta(id_opcion_s) {
       const id_oficinaLS = localStorage.getItem("id_oficina")
+      const id_cajeraLS = localStorage.getItem("id_cajera")
       if (id_oficinaLS){
-        const fecha_end = new Date();
+        const fecha_end = moment().tz('America/Lima').format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
         const param={
           id_oficina: id_oficinaLS,
+          id_cajera: id_cajeraLS,
           id_opcion_cliente: this.cliente,
           id_pregunta: 2,
           id_opcion: id_opcion_s,
-          date_init: this.fecha_init.toISOString(),
-          date_end: fecha_end.toISOString(),
-          created_at: fecha_end.toISOString(),
+          date_init: this.fecha_init,
+          date_end: fecha_end,
+          created_at: fecha_end,
         }
         console.log(param)
         this.$store.dispatch("setRespuestas", param)
