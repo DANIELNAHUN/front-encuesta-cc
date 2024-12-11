@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-btn color="green" to="/">Inicio</v-btn>
+    <v-btn color="green darken-4" to="/" dark>Volver Encuesta</v-btn>
     <v-card>
       <v-card-title>Selecciona tu Oficina</v-card-title>
       <v-card-text>
